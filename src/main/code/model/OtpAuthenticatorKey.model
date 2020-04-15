@@ -1,0 +1,20 @@
+{
+    "name": "OtpAuthenticatorKey",
+    "type": "model",
+    "gloopProperties": [
+        {
+            "name": "secretKey"
+        },
+        {
+            "name": "scratchCodes",
+            "type": "integer",
+            "array": true
+        },
+        {
+            "name": "otpAuthTotpUrl"
+        },
+        {
+            "name": "oneTimePassword"
+        }
+    ]
+}

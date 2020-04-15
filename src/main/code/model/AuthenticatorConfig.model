@@ -1,0 +1,37 @@
+{
+    "name": "AuthenticatorConfig",
+    "type": "model",
+    "gloopProperties": [
+        {
+            "name": "codeDigitsLength",
+            "type": "integer",
+            "defaultValue": 6,
+            "min": 6,
+            "max": 8
+        },
+        {
+            "name": "numberOfScratchCodes",
+            "type": "integer",
+            "defaultValue": 5,
+            "min": 5,
+            "max": 1000
+        },
+        {
+            "name": "windowSize",
+            "type": "integer",
+            "defaultValue": 3,
+            "min": 1
+        },
+        {
+            "name": "timeStepSizeInSeconds",
+            "type": "integer",
+            "defaultValue": 30,
+            "min": 1
+        },
+        {
+            "name": "enableScratchCodes",
+            "type": "boolean",
+            "defaultValue": false
+        }
+    ]
+}

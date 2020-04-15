@@ -1,0 +1,48 @@
+<!-- generally this file doesn't need changing -->
+<assembly>
+    <id>bin</id>
+    <formats>
+        <format>dir</format>
+        <format>zip</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>src/main/conf</directory>
+            <outputDirectory>conf</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/jar</directory>
+            <outputDirectory>jar</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/data</directory>
+            <outputDirectory>data</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/web</directory>
+            <outputDirectory>web</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/code</directory>
+            <outputDirectory>code</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>target/code</directory>
+            <outputDirectory>code</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory> resources </outputDirectory>
+        </fileSet>
+    </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>com.warrenstrange:googleauth</include>
+            </includes>
+            <useTransitiveFiltering>false</useTransitiveFiltering>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+    </dependencySets>
+</assembly>

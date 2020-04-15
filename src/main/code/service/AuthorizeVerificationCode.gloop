@@ -1,0 +1,115 @@
+{
+    "input": [
+        {
+            "name": "input",
+            "type": "model",
+            "gloopProperties": [
+                {
+                    "name": "config",
+                    "type": "model",
+                    "reference": "model.AuthenticatorConfig"
+                },
+                {
+                    "name": "secretKey"
+                },
+                {
+                    "name": "verificationCode",
+                    "type": "integer"
+                }
+            ]
+        }
+    ],
+    "output": [
+        {
+            "name": "response",
+            "type": "model",
+            "reference": "io.toro.martini.api.APIResponse"
+        },
+        {
+            "name": "responseCode",
+            "type": "integer",
+            "defaultValue": 200
+        }
+    ],
+    "steps": [
+        {
+            "type": "invokeCode",
+            "className": "service.TOTPAuthenticator",
+            "methodName": "authorize",
+            "parameters": [
+                "io.toro.gloop.object.property.GloopModel",
+                "java.lang.String",
+                "int"
+            ],
+            "inputs": [
+                {
+                    "from": [
+                        "input",
+                        "config"
+                    ],
+                    "to": [
+                        "authenticatorConfig"
+                    ]
+                },
+                {
+                    "from": [
+                        "input",
+                        "secretKey"
+                    ],
+                    "to": [
+                        "secretKey"
+                    ]
+                },
+                {
+                    "from": [
+                        "input",
+                        "verificationCode"
+                    ],
+                    "to": [
+                        "verificationCode"
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "from": [
+                        "response"
+                    ],
+                    "to": [
+                        "response"
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "fork",
+            "expression": "response.result == 'OK'",
+            "children": [
+                {
+                    "label": "true",
+                    "lines": [
+                        {
+                            "type": "set",
+                            "expression": "200",
+                            "to": [
+                                "responseCode"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "label": "$else",
+                    "lines": [
+                        {
+                            "type": "set",
+                            "expression": "400",
+                            "to": [
+                                "responseCode"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

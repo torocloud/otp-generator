@@ -1,0 +1,60 @@
+{
+    "info": {
+        "version": "1.0.0-SNAPSHOT"
+    },
+    "basePath": "/otp-generator",
+    "paths": {
+        "/authorise-code": {
+            "post": {
+                "bodyParameter": {
+                    "name": "input",
+                    "description": "input"
+                },
+                "responses": {
+                    "200": {
+                        "body": "response",
+                        "description": "Return a successful message"
+                    },
+                    "400": {
+                        "body": "response",
+                        "description": "Returns a 400 response if verification code is invalid"
+                    }
+                },
+                "operationType": "gloop",
+                "operationLocation": "service.AuthorizeVerificationCode",
+                "responseCodeField": "responseCode"
+            }
+        },
+        "/generate-otp": {
+            "post": {
+                "bodyParameter": {
+                    "name": "config"
+                },
+                "responses": {
+                    "200": {
+                        "body": "response",
+                        "description": "Return the one time password as well as the secretKey"
+                    }
+                },
+                "operationType": "gloop",
+                "operationLocation": "service.GenerateOneTimePassword"
+            }
+        },
+        "/generate-totp-url": {
+            "post": {
+                "bodyParameter": {
+                    "name": "input",
+                    "description": "input"
+                },
+                "responses": {
+                    "200": {
+                        "body": "response",
+                        "description": "return the generated totp URL"
+                    }
+                },
+                "operationType": "gloop",
+                "operationLocation": "service.GenerateOtpTotpURL"
+            }
+        }
+    }
+}

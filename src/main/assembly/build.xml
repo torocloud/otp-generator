@@ -1,0 +1,8 @@
+<project default="deploy-resources" name="OTP Generator Ant Script">
+    <target name="embed.version">
+        <echo message="Current Version = ${currentVersion}"/>
+        <replaceregexp match='version="(.*?)"' replace='version="${currentVersion}"' flags="gis" byline="false">
+            <fileset dir="${targetDir}/src/main/conf" includes="package.xml"/>
+        </replaceregexp>
+    </target>
+</project>

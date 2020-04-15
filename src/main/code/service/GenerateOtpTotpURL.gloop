@@ -1,0 +1,86 @@
+{
+    "input": [
+        {
+            "name": "input",
+            "type": "model",
+            "gloopProperties": [
+                {
+                    "name": "config",
+                    "type": "model",
+                    "reference": "model.AuthenticatorConfig"
+                },
+                {
+                    "name": "issuer"
+                },
+                {
+                    "name": "accountName"
+                }
+            ]
+        }
+    ],
+    "output": [
+        {
+            "name": "response",
+            "type": "model",
+            "reference": "io.toro.martini.api.APIResponse",
+            "gloopProperties": [
+                {
+                    "name": "otpAuthenticatorKey",
+                    "type": "model",
+                    "reference": "model.OtpAuthenticatorKey"
+                }
+            ]
+        }
+    ],
+    "steps": [
+        {
+            "type": "invokeCode",
+            "className": "service.TOTPAuthenticator",
+            "methodName": "generateOtpAuthTotpURL",
+            "parameters": [
+                "io.toro.gloop.object.property.GloopModel",
+                "java.lang.String",
+                "java.lang.String"
+            ],
+            "inputs": [
+                {
+                    "from": [
+                        "input",
+                        "config"
+                    ],
+                    "to": [
+                        "authenticatorConfig"
+                    ]
+                },
+                {
+                    "from": [
+                        "input",
+                        "issuer"
+                    ],
+                    "to": [
+                        "issuer"
+                    ]
+                },
+                {
+                    "from": [
+                        "input",
+                        "accountName"
+                    ],
+                    "to": [
+                        "accountName"
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "from": [
+                        "response"
+                    ],
+                    "to": [
+                        "response"
+                    ]
+                }
+            ]
+        }
+    ]
+}

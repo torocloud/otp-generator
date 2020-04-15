@@ -1,0 +1,4 @@
+<package stateOnStartup="started" id="otp.generator" version="1.0.0" context-path="/otp-generator">
+    <startup-services/>
+    <shutdown-services/>
+</package>
